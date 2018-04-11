@@ -18,7 +18,7 @@ public:
 
 	static void parseComment(std::stringstream & Stream);
 
-	static SceneObject parseCamera(std::stringstream & Stream);
+	static SceneObject* parseCamera(std::stringstream & Stream);
 
 	static vec3 parseVector(std::stringstream & Stream);
 

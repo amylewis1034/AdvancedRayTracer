@@ -15,9 +15,9 @@ void Parse::parseComment(std::stringstream & Stream)
 	getline(Stream, curLine);
 }
 
-SceneObject Parse::parseCamera(std::stringstream & Stream)
+SceneObject* Parse::parseCamera(std::stringstream & Stream)
 {
-	Camera camera;
+	Camera* camera = new Camera();
 
 	string curWord;
 	Stream >> curWord;
@@ -26,11 +26,20 @@ SceneObject Parse::parseCamera(std::stringstream & Stream)
 	{
 		if (curWord == "location") 
 		{
-			//Stream >> curWord;
-			camera.location = parseVector(Stream);
-			cout << camera.location.x << endl;
-			cout << camera.location.y << endl;
-			cout << camera.location.z << endl;
+			camera->location = parseVector(Stream);
+		}
+		else if (curWord == "up")
+		{
+			camera->up = parseVector(Stream);
+		}
+		else if (curWord == "right")
+		{
+			camera->right = parseVector(Stream);
+			cout << camera->right.x << endl;
+		}
+		else if (curWord == "look_at")
+		{
+			camera->look_at = parseVector(Stream);
 		}
 		Stream >> curWord;
 	}

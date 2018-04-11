@@ -9,9 +9,11 @@
 #include <sstream>
 #include <exception>
 #include <string>
+#include <vector>
+
 using namespace std;
 
-void init(int argc, char **argv) {
+void init(std::vector<SceneObject*> scene, int argc, char **argv) {
     if (argc == 5 || argv[1] == "raycast") {
         ifstream in_file;
 		stringstream s_stream;
@@ -35,7 +37,8 @@ void init(int argc, char **argv) {
 					}
 					else if (curWord == "camera") 
 					{
-						SceneObject obj = Parse::parseCamera(s_stream);
+						SceneObject* camera = Parse::parseCamera(s_stream);
+						scene.push_back(camera);
 					}
 					else if (curWord == "light_source") 
 					{
@@ -60,7 +63,9 @@ void init(int argc, char **argv) {
 }
 
 int main(int argc, char **argv) {
-	init(argc, argv);
+	std::vector<SceneObject*> scene;
+
+	init(scene, argc, argv);
 
 	return 0;
 }
