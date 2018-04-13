@@ -1,28 +1,28 @@
 // Amy Lewis
 // Assignment #1
 
-#ifndef SPHERE_H
-#define SPHERE_H
+#ifndef PLANE_H
+#define PLANE_H
 
 #include <string>
 #include <sstream>
 
 #include "Geometry.hpp"
 
-class Sphere : public Geometry
+class Plane : public Geometry
 {
 
 public:
-	float radius;
-	glm::vec3 center;
+	glm::vec3 normal;
+	float distance;
 
 	virtual std::string to_string() const override
 	{
-		std::string rad = std::to_string(radius);
+		std::string dist = std::to_string(distance);
 
-		std::string centerX = std::to_string(center.x);
-		std::string centerY = std::to_string(center.y);
-		std::string centerZ = std::to_string(center.z);
+		std::string normalX = std::to_string(normal.x);
+		std::string normalY = std::to_string(normal.y);
+		std::string normalZ = std::to_string(normal.z);
 
 		std::string pigR = std::to_string(pigment.colorRGB.r);
 		std::string pigG = std::to_string(pigment.colorRGB.g);
@@ -31,9 +31,9 @@ public:
 		std::string ambient = std::to_string(finish.ambient);
 		std::string diffuse = std::to_string(finish.diffuse);
 
-		return "- Center: {" + centerX + " " + centerY + " " + centerZ + "}\n"
-			 + "- Radius: " + rad + "\n"
-			 + "- Color: {" + pigR + " " + pigG + " " + pigB + "}\n"
+		return "- Normal: {" + normalX + " " + normalY + " " + normalZ + "}\n"
+			 + "- Distance: " + dist + "\n"
+		 	 + "- Color: {" + pigR + " " + pigG + " " + pigB + "}\n"
 			 + "- Material:\n"
 			 + "  - Ambient: " + ambient + "\n"
 			 + "  - Diffuse: " + diffuse + "\n";

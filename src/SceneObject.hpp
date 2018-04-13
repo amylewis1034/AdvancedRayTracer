@@ -4,18 +4,16 @@
 #ifndef SCENEOBJECT_H
 #define SCENEOBJECT_H
 
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <string>
 #include <sstream>
-
-struct vec3
-{
-	float x, y, z;
-};
 
 class SceneObject
 {
 
 public:
-	SceneObject() {};
+	virtual std::string to_string() const = 0;
+	virtual ~SceneObject() { }
 };
 #endif

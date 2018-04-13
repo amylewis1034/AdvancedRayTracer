@@ -4,19 +4,23 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <string>
 #include <sstream>
 
 #include "SceneObject.hpp"
 
-class Camera : public SceneObject
+class Camera
 {
 
 public:
-	vec3 location;
-	vec3 up;
-	vec3 right;
-	vec3 look_at;
+	glm::vec3 location;
+	glm::vec3 up;
+	glm::vec3 right;
+	glm::vec3 look_at;
+
+	std::string to_string() const;
 };
 
 #endif
